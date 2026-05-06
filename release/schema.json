@@ -31,11 +31,6 @@
             "display": "Endpoint",
             "type": "string",
             "required": true
-          },
-          "payload": {
-            "display": "JSON Payload",
-            "type": "json",
-            "required": false
           }
         }
       },

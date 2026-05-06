@@ -1,6 +1,6 @@
 {
   "name": "Testrails",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Testrails API v2 datasource",
   "main": "src/index.ts",
   "license": "MIT",

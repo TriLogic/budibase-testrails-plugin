@@ -31,11 +31,6 @@
             "display": "Endpoint",
             "type": "string",
             "required": true
-          },
-          "payload": {
-            "display": "JSON Payload",
-            "type": "json",
-            "required": false
           }
         }
       },
@@ -86,6 +81,6 @@
       }
     }
   },
-  "hash": "d76edfe0610c0a06bdc6dce16501e2ebed9ad27f",
-  "version": "0.1.5"
+  "hash": "e6eee0c51b1a92e42793c992386e5e614e0a721d",
+  "version": "0.1.6"
 }

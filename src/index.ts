@@ -45,7 +45,7 @@ class CustomIntegration {
     const apiKey = String(this.apiKey || "")
 
     if (!email || !apiKey) {
-      throw new Error("Missing Testrails email or API key")
+      return ""
     }
 
     return Buffer.from(`${this.email}:${this.apiKey}`).toString("base64")
