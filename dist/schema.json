@@ -8,28 +8,65 @@
     "description": "Testrails API v2 datasource",
     "datasource": {
       "host": {
+        "display": "Testrails Host",
         "type": "string",
         "required": true
       },
       "email": {
+        "display": "Email",
         "type": "string",
         "required": true
       },
       "apiKey": {
+        "display": "API Key",
         "type": "password",
         "required": true
       }
     },
     "query": {
-      "execute": {
+      "read": {
         "type": "fields",
         "fields": {
-          "method": {
-            "display": "Method",
+          "endpoint": {
+            "display": "Endpoint",
             "type": "string",
-            "required": true,
-            "default": "GET"
+            "required": true
+          }
+        }
+      },
+      "create": {
+        "type": "fields",
+        "fields": {
+          "endpoint": {
+            "display": "Endpoint",
+            "type": "string",
+            "required": true
           },
+          "payload": {
+            "display": "JSON Payload",
+            "type": "json",
+            "required": false
+          }
+        }
+      },
+      "update": {
+        "type": "fields",
+        "fields": {
+          "endpoint": {
+            "display": "Endpoint",
+            "type": "string",
+            "required": true
+          },
+          "payload": {
+            "display": "JSON Payload",
+            "type": "json",
+            "required": false
+          }
+        }
+      },
+      "delete": {
+        "type": "fields",
+        "fields": {
           "endpoint": {
             "display": "Endpoint",
             "type": "string",
@@ -44,6 +81,6 @@
       }
     }
   },
-  "hash": "db026a497ece49dd244a0466abea02e4471f7b41",
+  "hash": "4567cbdd18dc1b364468246ef752f5719b14a572",
   "version": "1.0.0"
 }
