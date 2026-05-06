@@ -51,6 +51,15 @@ class CustomIntegration {
   ) {
     const url = this.buildUrl(endpoint)
 
+  const hasPayload =
+    payload !== undefined &&
+    payload !== null &&
+    payload !== ""
+
+  method = method === "GET" && hasPayload
+    ? "POST"
+    : method
+
     const opts: RequestOptions = {
       method,
       headers: {
@@ -91,11 +100,11 @@ class CustomIntegration {
   }
 
   async update(query: EndpointQuery) {
-    return this.call("PUT", query.endpoint, query.payload)
+    return this.call("POST", query.endpoint, query.payload)
   }
 
   async delete(query: EndpointQuery) {
-    return this.call("DELETE", query.endpoint, query.payload)
+    return this.call("POST", query.endpoint, query.payload)
   }
 }
 
