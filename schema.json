@@ -1,0 +1,47 @@
+{
+  "type": "datasource",
+  "metadata": {},
+  "schema": {
+    "docs": "https://docs.budibase.com",
+    "friendlyName": "Testrails",
+    "type": "API",
+    "description": "Testrails API v2 datasource",
+    "datasource": {
+      "host": {
+        "type": "string",
+        "required": true
+      },
+      "email": {
+        "type": "string",
+        "required": true
+      },
+      "apiKey": {
+        "type": "password",
+        "required": true
+      }
+    },
+    "query": {
+      "execute": {
+        "type": "fields",
+        "fields": {
+          "method": {
+            "display": "Method",
+            "type": "string",
+            "required": true,
+            "default": "GET"
+          },
+          "endpoint": {
+            "display": "Endpoint",
+            "type": "string",
+            "required": true
+          },
+          "payload": {
+            "display": "JSON Payload",
+            "type": "json",
+            "required": false
+          }
+        }
+      }
+    }
+  }
+}
