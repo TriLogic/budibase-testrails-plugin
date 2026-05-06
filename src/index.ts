@@ -67,10 +67,6 @@ class CustomIntegration {
       throw new Error("Missing Testrails host, email, or API key")
     }
 
-    method = method === "GET" && hasPayload
-      ? "POST"
-      : method
-
     const opts: RequestOptions = {
       method,
       headers: {
@@ -103,6 +99,17 @@ class CustomIntegration {
   }
 
   async read(query: EndpointQuery) {
+    if (!query || !query.endpoint) {
+      return []
+    }
+  
+    const payload = query.payload
+    const hasPayload =
+      payload !== undefined &&
+      payload !== null &&
+      payload !== ""
+
+    const method = hasPayload ? "POST" : "GET"
     return this.call("GET", query.endpoint)
   }
 
