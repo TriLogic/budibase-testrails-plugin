@@ -24,8 +24,8 @@ class CustomIntegration {
 
   constructor(config: DatasourceConfig) {
     this.host = this.cleanHost(config.host)
-    this.email = config.email
-    this.apiKey = config.apiKey
+    this.email = String(config.email || "")
+    this.apiKey = String(config.apiKey || "")
   }
 
   private cleanHost(host: string): string {
@@ -41,6 +41,13 @@ class CustomIntegration {
   }
 
   private buildAuthHeader(): string {
+    const email = String(this.email || "")
+    const apiKey = String(this.apiKey || "")
+
+    if (!email || !apiKey) {
+      throw new Error("Missing Testrails email or API key")
+    }
+
     return Buffer.from(`${this.email}:${this.apiKey}`).toString("base64")
   }
 
@@ -51,14 +58,18 @@ class CustomIntegration {
   ) {
     const url = this.buildUrl(endpoint)
 
-  const hasPayload =
-    payload !== undefined &&
-    payload !== null &&
-    payload !== ""
+    const hasPayload =
+      payload !== undefined &&
+      payload !== null &&
+      payload !== ""
 
-  method = method === "GET" && hasPayload
-    ? "POST"
-    : method
+    if (!this.host || !this.email || !this.apiKey) {
+      throw new Error("Missing Testrails host, email, or API key")
+    }
+
+    method = method === "GET" && hasPayload
+      ? "POST"
+      : method
 
     const opts: RequestOptions = {
       method,
